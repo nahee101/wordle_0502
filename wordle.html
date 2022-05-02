@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        input {
+            width: 50px;
+            height: 50px;
+            font-size: 40px;
+            text-align: center;
+        }
+
+    </style>
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <input class="input" type="text">
+    <button>제출</button>
+
+    <script>
+        let answer = 'abced';
+        document.querySelector('button').addEventListener('click', 
+            function() {
+                let input = document.querySelectorAll('.input');
+
+                for(let i = 0; i < 5; i++) {
+                    //위치가 맞으면 초록실
+                    //위치는 안 맞으면 노란칠
+                    //다 안 맞으면 회색칠
+
+                    if(input[i].value == answer[i]) {
+                            input[i].style.background = 'green';
+                        } else if(answer.includes(input[i].value)) {
+                            input[i].style.background = 'yellow';
+                        } else{
+                            input[i].style.background = 'lightgrey';
+                        }
+                    input[i].classList.remove('input');
+                }
+
+                let template = `
+                <div>
+                    <input class="input" type="text">
+                    <input class="input" type="text">
+                    <input class="input" type="text">
+                    <input class="input" type="text">
+                    <input class="input" type="text">
+                </div>`;
+                
+                document.querySelector('body').insertAdjacentHTML('beforeend', template);
+
+            }
+        )
+
+    </script>
+</body>
+</html>
